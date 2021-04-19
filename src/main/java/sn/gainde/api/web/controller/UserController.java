@@ -11,6 +11,7 @@ import sn.gainde.api.web.dto.response.Response;
 
 @RestController
 @RequestMapping(value = "/api/v1/users/")
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequiredArgsConstructor
 public class UserController {
 
