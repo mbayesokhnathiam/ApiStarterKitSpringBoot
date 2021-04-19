@@ -54,5 +54,19 @@ public class UserController {
 
     }
 
+    @GetMapping(value="/{id}")
+    public Response<?> getUserByID(@PathVariable Long id){
+
+        Utilisateur detail = utilisateurService.getUserById(id);
+
+        if(detail != null){
+            return Response.ok().setPayload(detail).setMessage("Informations utilisateurs!");
+        }
+
+        return Response.notFound().setErrors("Cet utilisateur n'existe pas!");
+
+
+    }
+
     
 }

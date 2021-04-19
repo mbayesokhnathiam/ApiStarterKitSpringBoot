@@ -9,4 +9,5 @@ public interface UtilisateurService {
     Utilisateur saveUser(Utilisateur utilisateur);
     Utilisateur editUser(long id, UtilisateurDto userDto);
     Page<Utilisateur> getListUtilisateurs(int page, int size);
+    Utilisateur getUserById(Long id);
 }
