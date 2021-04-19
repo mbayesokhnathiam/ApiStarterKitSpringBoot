@@ -40,7 +40,7 @@ public class UserController {
             Long totalElements = pages.getTotalElements();
             int totalPages = pages.getTotalPages();
             int number = pages.getNumber();
-            return Response.ok().setPayload(pages.getContent()).setMetadata(new Response.PageMetadata(newSize, totalElements, totalPages, number));
+            return Response.ok().setPayload(saved).setMetadata(new Response.PageMetadata(newSize, totalElements, totalPages, number));
         }
 
         return Response.exception().setErrors("Une erreur est survenue");
@@ -58,7 +58,7 @@ public class UserController {
             Long totalElements = pages.getTotalElements();
             int totalPages = pages.getTotalPages();
             int number = pages.getNumber();
-            return Response.ok().setPayload(pages.getContent()).setMetadata(new Response.PageMetadata(newSize, totalElements, totalPages, number));
+            return Response.ok().setPayload(updated).setMetadata(new Response.PageMetadata(newSize, totalElements, totalPages, number));
         }
 
         return Response.exception().setErrors("Une erreur est survenue");
