@@ -34,7 +34,12 @@ public class UserController {
         Utilisateur saved = utilisateurService.saveUser(user);
 
         if(saved != null){
-            return Response.ok().setPayload(saved).setMessage("Utilisateur enregistré avec succes!");
+            Page<Utilisateur> pages = utilisateurService.getListUtilisateurs(0, 10);
+            int newSize = pages.getSize();
+            Long totalElements = pages.getTotalElements();
+            int totalPages = pages.getTotalPages();
+            int number = pages.getNumber();
+            return Response.ok().setPayload(pages.getContent()).setMetadata(new Response.PageMetadata(newSize, totalElements, totalPages, number));
         }
 
         return Response.exception().setErrors("Une erreur est survenue");
@@ -46,7 +51,12 @@ public class UserController {
         Utilisateur updated = utilisateurService.editUser(id,user);
 
         if(updated != null){
-            return Response.ok().setPayload(updated).setMessage("Utilisateur modifié avec succes!");
+            Page<Utilisateur> pages = utilisateurService.getListUtilisateurs(0, 10);
+            int newSize = pages.getSize();
+            Long totalElements = pages.getTotalElements();
+            int totalPages = pages.getTotalPages();
+            int number = pages.getNumber();
+            return Response.ok().setPayload(pages.getContent()).setMetadata(new Response.PageMetadata(newSize, totalElements, totalPages, number));
         }
 
         return Response.exception().setErrors("Une erreur est survenue");
