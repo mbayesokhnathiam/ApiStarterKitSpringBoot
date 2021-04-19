@@ -6,7 +6,7 @@ import sn.gainde.api.web.dto.model.UtilisateurDto;
 
 public interface UtilisateurService {
 
-    boolean saveUser(Utilisateur utilisateur);
-    boolean editUser(long id, UtilisateurDto userDto);
+    Utilisateur saveUser(Utilisateur utilisateur);
+    Utilisateur editUser(long id, UtilisateurDto userDto);
     Page<Utilisateur> getListUtilisateurs(int page, int size);
 }

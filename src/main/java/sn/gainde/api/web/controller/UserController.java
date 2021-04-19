@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import sn.gainde.api.model.Utilisateur;
 import sn.gainde.api.service.UtilisateurService;
+import sn.gainde.api.web.dto.model.UtilisateurDto;
 import sn.gainde.api.web.dto.response.Response;
 
 
@@ -30,18 +31,27 @@ public class UserController {
     
     @PostMapping(value="/save")
     public Response<?> saveUser(@RequestBody Utilisateur user){
-        boolean status = utilisateurService.saveUser(user);
+        Utilisateur saved = utilisateurService.saveUser(user);
 
-        if(status){
-            return Response.ok().setMessage("Utilisateur envoyer avec succes!");
+        if(saved != null){
+            return Response.ok().setPayload(saved).setMessage("Utilisateur enregistré avec succes!");
         }
 
         return Response.exception().setErrors("Une erreur est survenue");
     }
 
     @PutMapping(value="update/{id}")
-    public Response<?> updateUser(@RequestBody Utilisateur user){
-        return null;
+    public Response<?> updateUser(@PathVariable Long id, @RequestBody UtilisateurDto user){
+
+        Utilisateur updated = utilisateurService.editUser(id,user);
+
+        if(updated != null){
+            return Response.ok().setPayload(updated).setMessage("Utilisateur modifié avec succes!");
+        }
+
+        return Response.exception().setErrors("Une erreur est survenue");
+
+
     }
 
     

@@ -18,18 +18,27 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
 
     @Override
-    public boolean saveUser(Utilisateur utilisateur) {
+    public Utilisateur saveUser(Utilisateur utilisateur) {
         try {
-            userRepository.save(utilisateur);
-            return  true;
+            return  userRepository.save(utilisateur);
+
         }catch (Exception ex){
-            return false;
+            return null;
         }
     }
 
     @Override
-    public boolean editUser(long id, UtilisateurDto userDto) {
-        return false;
+    public Utilisateur editUser(long id, UtilisateurDto userDto) {
+        Utilisateur currentUser = userRepository.findById(id).orElse(null);
+
+        currentUser.setEmail(userDto.getEmail());
+        currentUser.setNom(userDto.getNom());
+        currentUser.setPrenom(userDto.getPrenom());
+        currentUser.setTelephone(userDto.getTelephone());
+
+        Utilisateur userUpdated = userRepository.save(currentUser);
+
+        return userUpdated;
     }
 
     @Override
