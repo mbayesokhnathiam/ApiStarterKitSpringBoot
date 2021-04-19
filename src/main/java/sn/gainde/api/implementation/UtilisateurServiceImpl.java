@@ -30,7 +30,6 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public Utilisateur editUser(long id, UtilisateurDto userDto) {
         Utilisateur currentUser = userRepository.findById(id).orElse(null);
-
         currentUser.setEmail(userDto.getEmail());
         currentUser.setNom(userDto.getNom());
         currentUser.setPrenom(userDto.getPrenom());
