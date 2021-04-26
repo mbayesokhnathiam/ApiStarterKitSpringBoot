@@ -8,4 +8,6 @@ public class UtilisateurDto {
     private String nom;
     private String telephone;
     private String email;
+    private String password;
+    private Long profil_id;
 }

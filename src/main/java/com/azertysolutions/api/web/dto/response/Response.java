@@ -14,6 +14,14 @@ import lombok.experimental.Accessors;
  * @author MTHIAM
  *
  * @param <T>
+ *
+ * cette classe permet d'uniformiser le format de réponse envoyer au client.
+ * Elle est composée de:
+ * status: le statut de la réponse (Ex: OK, BAD_REQUEST, UNAUTHORIZED etc... )
+ * payload: C'est la donnée envoyé au client, elle générique donc peut prndre tout type de données
+ * errors: Stock les erreur s'il y a en
+ * message: Stock un message de succes!
+ * metadata: Stock les donnees de la pagination
  */
 
 @Getter
@@ -99,6 +107,9 @@ public class Response<T> {
     }
 
 
+    /**
+     * enumeration de status (les status de reponse possible)
+     */
     public enum Status {
         OK, BAD_REQUEST, UNAUTHORIZED, VALIDATION_EXCEPTION, EXCEPTION, WRONG_CREDENTIALS, ACCESS_DENIED, 
         NOT_FOUND, DUPLICATE_ENTITY, DUPLICATE_EMAIL
@@ -109,10 +120,10 @@ public class Response<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class PageMetadata {
-        private final int size;
-        private final long totalElements;
-        private final int totalPages;
-        private final int number;
+        private final int size; // le nombre d'éléments a afficher
+        private final long totalElements; // Nombre total d'éléments
+        private final int totalPages; // Nombre total de pages
+        private final int number; //Le numero de page courant
 
         public PageMetadata(int size, long totalElements, int totalPages, int number) {
             this.size = size;
