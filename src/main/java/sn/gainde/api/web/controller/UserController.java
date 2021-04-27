@@ -2,6 +2,8 @@ package sn.gainde.api.web.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import sn.gainde.api.model.Utilisateur;
 import sn.gainde.api.service.UtilisateurService;
@@ -16,8 +18,10 @@ import sn.gainde.api.web.dto.response.Response;
 public class UserController {
 
     private final UtilisateurService utilisateurService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping("list")
+   // @PostAuthorize("hasAnyAuthority('EMPLOYE')")
     public Response<?> getListUsers(@RequestParam(value = "page",defaultValue = "0") int page,
                                           @RequestParam(value = "size",defaultValue = "10") int size){
 
@@ -31,7 +35,9 @@ public class UserController {
     }
     
     @PostMapping(value="/save")
+    //@PostAuthorize("hasAnyAuthority('ADMIN')")
     public Response<?> saveUser(@RequestBody Utilisateur user){
+        user.setPassword(passwordEncoder.encode("Passer1234"));
         Utilisateur saved = utilisateurService.saveUser(user);
 
         if(saved != null){
@@ -40,13 +46,14 @@ public class UserController {
             Long totalElements = pages.getTotalElements();
             int totalPages = pages.getTotalPages();
             int number = pages.getNumber();
-            return Response.ok().setPayload(saved).setMetadata(new Response.PageMetadata(newSize, totalElements, totalPages, number));
+            return Response.ok().setPayload(saved).setMessage("Utilisateur ajouté avec succès").setMetadata(new Response.PageMetadata(newSize, totalElements, totalPages, number));
         }
 
         return Response.exception().setErrors("Une erreur est survenue");
     }
 
     @PutMapping(value="update/{id}")
+    //@PostAuthorize("hasAnyAuthority('ADMIN')")
     public Response<?> updateUser(@PathVariable Long id, @RequestBody UtilisateurDto user){
 
         System.out.println("----------------update--------------------");
@@ -67,6 +74,7 @@ public class UserController {
     }
 
     @GetMapping(value="/{id}")
+    //@PostAuthorize("hasAnyAuthority('EMPLOYE')")
     public Response<?> getUserByID(@PathVariable Long id){
 
         Utilisateur detail = utilisateurService.getUserById(id);

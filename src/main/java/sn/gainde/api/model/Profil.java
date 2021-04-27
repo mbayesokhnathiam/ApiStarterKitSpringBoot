@@ -29,9 +29,9 @@ public class Profil implements Serializable {
     private String nom;
     private String code; 
     private String domaine;
-//    @OneToMany(mappedBy = "profil")
-//    @JsonIgnore
-//    private List<Utilisateur> utilisateurs;
+    @OneToMany(mappedBy = "profil")
+    @JsonIgnore
+    private List<Utilisateur> utilisateurs;
 
 
 }

@@ -40,15 +40,10 @@ public class Utilisateur implements Serializable{
     private String email;
 	@Column(name="uti_password")
     private String password;
-//	@Column(name="uti_statut")
-//    private boolean statut=true;
-//    @ManyToOne
-//    @JoinColumn(name="uti_pro_id")
-//    private Profil profil;
-//
-//	public Utilisateur() {
-//		// TODO Auto-generated constructor stub
-//	}
-
+	@Column(name="uti_statut")
+    private boolean statut=true;
+    @ManyToOne
+    @JoinColumn(name="uti_pro_id")
+    private Profil profil;
 
 }
