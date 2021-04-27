@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import sn.gainde.sut.portail.model.Utilisateur;
-import sn.gainde.sut.portail.service.UtilisateurService;
+import sn.gainde.sut.portail.entities.Utilisateur;
+import sn.gainde.sut.portail.services.UtilisateurService;
 import sn.gainde.sut.portail.web.dto.model.UtilisateurDto;
 import sn.gainde.sut.portail.web.dto.response.Response;
 
@@ -53,7 +53,7 @@ public class UserController {
 
     @PutMapping(value="update/{id}")
     //@PostAuthorize("hasAnyAuthority('ADMIN')")
-    public Response<?> updateUser(@PathVariable Long id, @RequestBody UtilisateurDto user){
+    public Response<?> updateUser(@PathVariable Integer id, @RequestBody UtilisateurDto user){
 
         System.out.println("----------------update--------------------");
         Utilisateur updated = utilisateurService.editUser(id,user);
@@ -74,7 +74,7 @@ public class UserController {
 
     @GetMapping(value="/{id}")
     //@PostAuthorize("hasAnyAuthority('EMPLOYE')")
-    public Response<?> getUserByID(@PathVariable Long id){
+    public Response<?> getUserByID(@PathVariable Integer id){
 
         Utilisateur detail = utilisateurService.getUserById(id);
 

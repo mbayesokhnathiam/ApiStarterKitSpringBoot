@@ -6,8 +6,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sn.gainde.sut.portail.model.Utilisateur;
-import sn.gainde.sut.portail.repository.UserRepository;
+import sn.gainde.sut.portail.entities.Utilisateur;
+import sn.gainde.sut.portail.repositories.UserRepository;
 
 /*
 Il est simple à mettre en œuvre UserDetailsService et facile pour nous de

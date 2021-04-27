@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import sn.gainde.sut.portail.model.Utilisateur;
+import sn.gainde.sut.portail.entities.Utilisateur;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -24,7 +24,7 @@ téléphone, etc.).
 public class UserPrinciple implements UserDetails {
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private Integer id;
 
     private String name;
 
@@ -38,7 +38,7 @@ public class UserPrinciple implements UserDetails {
     //Renvoie les droits accordés à l'utilisateur. Impossible de revenir null.
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrinciple(Long id, String name,
+    public UserPrinciple(Integer id, String name,
                          String username, String email, String password,
                          Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
@@ -64,7 +64,7 @@ public class UserPrinciple implements UserDetails {
         );
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 

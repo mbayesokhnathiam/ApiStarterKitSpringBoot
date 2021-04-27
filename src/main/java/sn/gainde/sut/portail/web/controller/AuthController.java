@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.bind.annotation.*;
-import sn.gainde.sut.portail.implementation.UtilisateurServiceImpl;
+import sn.gainde.sut.portail.services.impl.UtilisateurServiceImpl;
 import sn.gainde.sut.portail.security.jwt.JwtProvider;
 import sn.gainde.sut.portail.security.services.UserDetailsServiceImpl;
 import sn.gainde.sut.portail.web.dto.model.LoginForm;

@@ -1,13 +1,13 @@
-package sn.gainde.sut.portail.service;
+package sn.gainde.sut.portail.services;
 
 import org.springframework.data.domain.Page;
-import sn.gainde.sut.portail.model.Utilisateur;
+import sn.gainde.sut.portail.entities.Utilisateur;
 import sn.gainde.sut.portail.web.dto.model.UtilisateurDto;
 
 public interface UtilisateurService {
 
     Utilisateur saveUser(Utilisateur utilisateur);
-    Utilisateur editUser(long id, UtilisateurDto userDto);
+    Utilisateur editUser(Integer id, UtilisateurDto userDto);
     Page<Utilisateur> getListUtilisateurs(int page, int size);
-    Utilisateur getUserById(Long id);
+    Utilisateur getUserById(Integer id);
 }
