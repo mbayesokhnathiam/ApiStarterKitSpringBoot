@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>sn.gainde</groupId>
-    <artifactId>api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>sut-portail</artifactId>
+    <version>1.0.0</version>
     <packaging>war</packaging>
-    <name>api</name>
-    <description>Factory Spring Boot Started kit</description>
+    <name>sut-portail</name>
+    <description>Projet SUT : Système Unique de Télépaiement des Impôts et Taxes</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
